@@ -1,0 +1,31 @@
+#!/bin/sh
+
+BUK_WEBAPP_DIR="$HOME/buk/buk-webapp"
+
+if [ ! -d "$BUK_WEBAPP_DIR" ]; then
+  if command -v notify-send >/dev/null; then
+    notify-send "Error en Script Buk" "El directorio $BUK_WEBAPP_DIR no existe."
+  else
+    echo "Error: El directorio $BUK_WEBAPP_DIR no existe." >&2
+  fi
+  exit 1
+fi
+
+LOG_DIR="$HOME/.cache/buk_script_logs"
+mkdir -p "$LOG_DIR"
+
+# Comando 1: Rails Server
+(cosmic-term -- zsh -c 'echo "(Rails Server) Iniciando en Cosmic-Term..."; cd "$HOME/buk/buk-webapp" && rails s; exec zsh -i' \
+  > "$LOG_DIR/cosmic_rails_s.log" 2>&1 &)
+
+# Comando 2: Webpack Dev Server
+(cosmic-term -- zsh -c 'echo "(Webpack) Iniciando en Cosmic-Term..."; cd "$HOME/buk/buk-webapp" && bin/webpack-dev-server; exec zsh -i' \
+  > "$LOG_DIR/cosmic_webpack.log" 2>&1 &)
+
+# Comando 3: Rails Jobs
+(cosmic-term -- zsh -c 'echo "(Jobs) Iniciando en Cosmic-Term..."; cd "$HOME/buk/buk-webapp" && rails jobs:work; exec zsh -i' \
+  > "$LOG_DIR/cosmic_jobs.log" 2>&1 &)
+
+# Comando 4: Rails Console
+(cosmic-term -- zsh -c 'echo "(Console) Iniciando en Cosmic-Term..."; cd "$HOME/buk/buk-webapp" && rails c; exec zsh -i' \
+  > "$LOG_DIR/cosmic_console.log" 2>&1 &)

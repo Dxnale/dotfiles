@@ -1,0 +1,14 @@
+# Cookies del navegador
+**/cookies.sqlite*
+**/Cookies*
+cookie
+cookies
+Cookies
+
+# Archivos temporales y de caché
+**/Cache*
+**/cache*
+**/*.tmp
+**/Session *
+**/Local Storage/*
+**/Storage/*

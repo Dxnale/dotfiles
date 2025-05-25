@@ -1,0 +1,11 @@
+[credential]
+    username = dandan-t
+[user]
+    name = Daniel Torrealba
+    email = dtorrealba@buk.cl
+[core]
+    sshCommand = ssh -i ~/.ssh/dandan-t -F /dev/null
+[user]
+	signingkey = 7F38497146FF453E
+[commit]
+	gpgsign = true

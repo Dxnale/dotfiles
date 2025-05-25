@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Self
+
+HOST_ROOT: Path = Path.home()
+REPO_ROOT: Path = Path(__file__).parent.parent
+CONFIG_ROOT: Path = REPO_ROOT / "config"
+
+@dataclass
+class Config:
+    host: Path  # relative to home directory
+    repo: Path  # relative to `dotfiles/config` directory
+
+    @classmethod
+    def home(
+        cls: type[Self],
+        host: str,
+        repo: str,
+    ) -> Self:
+        return cls(
+            host=HOST_ROOT / host,
+            repo=CONFIG_ROOT / repo,
+        )
+
+CONFIG_FILES = [
+    # Zsh
+    Config.home(".zshrc", "zsh/zshrc"),
+    Config.home(".p10k.zsh", "zsh/p10k.zsh"),
+    # Git
+    Config.home(".config/git/config", "git/config"),
+    Config.home(".config/git/ignore", "git/ignore"),
+    Config.home(".config/git/template", "git/template"),
+    Config.home("buk/.gitconfig", "git/buk-gitconfig"),
+    Config.home("personal/.gitconfig", "git/personal-gitconfig"),
+    # Cosmic-Term
+    Config.home(".config/cosmic/com.system76.CosmicTerm/v1", "cosmic-term/app_theme"),
+    Config.home(".config/cosmic/com.system76.CosmicTerm/v1", "cosmic-term/font_name"),
+    Config.home(".config/cosmic/com.system76.CosmicTerm/v1", "cosmic-term/font_size"),
+    Config.home(".config/cosmic/com.system76.CosmicTerm/v1", "cosmic-term/opacity"),
+    Config.home(".config/cosmic/com.system76.CosmicTerm/v1", "cosmic-term/show_headerbar"),
+    Config.home(".config/cosmic/com.system76.CosmicTerm/v1", "cosmic-term/use_bright_bold"),
+    # Curl
+    Config.home(".config/curl/config", "curl/config"),
+    # Fastfetch
+    Config.home(".config/fastfetch", "fastfetch/config.jsonc"),
+    # Scripts
+    Config.home("scripts", "scripts/buk"),
+    Config.home("scripts", "scripts/buk-ghostty"),
+    Config.home("scripts", "scripts/centra-init"),
+    Config.home("scripts", "scripts/efimero-connect"),
+    Config.home("scripts", "scripts/efimero-start"),
+]
+
+def render(file: Config) -> None:
+    sys.stderr.write(f"🞫 INFO: render {file.repo} to {file.host}\n")
+
+    file.host.parent.mkdir(parents=True, exist_ok=True)
+
+    # Load original file
+    with file.repo.open("r") as repo_file:
+        data = repo_file.read()
+
+    # Write final config
+    with file.host.open("w") as host_file:
+        host_file.write(data)
+
+def main() -> None:
+    try:
+        for file in CONFIG_FILES:
+            render(file)
+    except Exception as e:
+        sys.stderr.write(
+            f"🞫 CRIT: {e}\n"
+        )
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
