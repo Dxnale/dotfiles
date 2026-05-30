@@ -1,0 +1,7 @@
+[credential]
+    username = dxnale
+[user]
+    name = dxnale
+    email = daniel.torrealba@alumnos.ipleones.cl
+[core]
+    sshCommand = ssh -i ~/.ssh/id_rsa -F /dev/null

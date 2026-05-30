@@ -1,0 +1,45 @@
+#!/bin/sh
+
+BUK_WEBAPP_DIR="$HOME/buk/buk-webapp"
+
+if [ ! -d "$BUK_WEBAPP_DIR" ]; then
+  # Si quieres una notificación de error en el escritorio en lugar de la terminal:
+  if command -v notify-send >/dev/null; then
+    notify-send "Error en Script Buk" "El directorio $BUK_WEBAPP_DIR no existe."
+  else
+    # Como último recurso, si no hay notify-send, este error iría a stderr
+    # lo cual podría hacer que una terminal aparezca si se lanza desde un entorno gráfico.
+    echo "Error: El directorio $BUK_WEBAPP_DIR no existe." >&2
+  fi
+  exit 1
+fi
+
+# Directorio para los logs de Ghostty (opcional, puedes redirigir a /dev/null)
+LOG_DIR="$HOME/.cache/buk_script_logs"
+mkdir -p "$LOG_DIR" # Crea el directorio de logs si no existe
+
+# Redirige la salida de cada instancia de Ghostty a su propio archivo de log
+# o a /dev/null si no quieres guardar logs (ej. > /dev/null 2>&1 &)
+
+# Comando 1: Rails Server
+(ghostty --working-directory="$BUK_WEBAPP_DIR" \
+  -e "zsh -c 'echo \"(Rails Server) Iniciando en Ghostty...\"; cd \"$BUK_WEBAPP_DIR\" && rails s; exec zsh -i'" \
+  > "$LOG_DIR/ghostty_rails_s.log" 2>&1 &)
+
+# Comando 2: Webpack Dev Server
+(ghostty --working-directory="$BUK_WEBAPP_DIR" \
+  -e "zsh -c 'echo \"(Webpack) Iniciando en Ghostty...\"; cd \"$BUK_WEBAPP_DIR\" && bin/webpack-dev-server; exec zsh -i'" \
+  > "$LOG_DIR/ghostty_webpack.log" 2>&1 &)
+
+# Comando 3: Rails Jobs
+(ghostty --working-directory="$BUK_WEBAPP_DIR" \
+  -e "zsh -c 'echo \"(Jobs) Iniciando en Ghostty...\"; cd \"$BUK_WEBAPP_DIR\" && rails jobs:work; exec zsh -i'" \
+  > "$LOG_DIR/ghostty_jobs.log" 2>&1 &)
+
+# Comando 4: Rails Console
+(ghostty --working-directory="$BUK_WEBAPP_DIR" \
+  -e "zsh -c 'echo \"(Console) Iniciando en Ghostty...\"; cd \"$BUK_WEBAPP_DIR\" && rails c; exec zsh -i'" \
+  > "$LOG_DIR/ghostty_console.log" 2>&1 &)
+
+# El script termina aquí. No hay 'echo' del script principal.
+# Los procesos de Ghostty están corriendo en segundo plano y su salida está redirigida.

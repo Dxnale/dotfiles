@@ -1,0 +1,9 @@
+Legend: production dependency, optional only, dev only
+
+/home/dan/.local/share/pnpm/global/5
+
+dependencies:
+@biomejs/biome 2.4.13
+@google/gemini-cli 0.34.0
+@openai/codex 0.128.0
+npm 11.12.1

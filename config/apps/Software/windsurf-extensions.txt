@@ -1,0 +1,14 @@
+astro-build.astro-vscode
+batisteo.vscode-django
+bierner.markdown-mermaid
+biomejs.biome
+cedricverlinden.cursor-dark
+charliermarsh.ruff
+codeium.windsurfpyright
+moalamri.inline-fold
+ms-python.debugpy
+ms-python.python
+mvllow.rose-pine
+mystery-git.astronomic-theme
+oven.bun-vscode
+sainnhe.gruvbox-material

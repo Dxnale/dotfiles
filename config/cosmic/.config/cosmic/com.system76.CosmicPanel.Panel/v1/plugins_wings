@@ -1,0 +1,9 @@
+Some(([
+    "com.system76.CosmicAppletPower",
+    "io.github.wiiznokes.cosmic-ext-applet-clipboard-manager",
+    "dev.dominiccgeh.CosmicAppletEmojiSelector",
+], [
+    "com.system76.CosmicAppletAudio",
+    "com.system76.CosmicAppletNetwork",
+    "com.system76.CosmicAppletBattery",
+]))

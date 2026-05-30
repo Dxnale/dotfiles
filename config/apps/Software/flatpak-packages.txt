@@ -1,0 +1,13 @@
+app.zen_browser.zen
+best.ellie.StartupConfiguration
+com.belmoussaoui.Decoder
+com.bktus.gpgfrontend
+com.github.johnfactotum.Foliate
+com.github.ryonakano.konbucase
+com.stremio.Stremio
+dev.edfloreshz.Calculator
+dev.edfloreshz.CosmicTweaks
+io.gitlab.theevilskeleton.Upscaler
+me.iepure.devtoolbox
+org.nomacs.ImageLounge
+org.wezfurlong.wezterm

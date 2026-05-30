@@ -1,0 +1,9 @@
+(
+    output: "eDP-1",
+    source: Path("/home/dan/Pictures/walls/new/5120x2880-palette-wallpaper-pack-1-contains-19-wallpapers-2-v0-tnzt264737we1 (1).webp"),
+    filter_by_theme: false,
+    rotation_frequency: 300,
+    filter_method: Lanczos,
+    scaling_mode: Zoom,
+    sampling_method: Alphanumeric,
+)

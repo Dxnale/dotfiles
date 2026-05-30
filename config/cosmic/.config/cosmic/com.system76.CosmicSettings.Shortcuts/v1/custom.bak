@@ -1,0 +1,62 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "e",
+    ): System(HomeFolder),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "f",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "l",
+    ): System(LockScreen),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "s",
+    ): System(Screenshot),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Escape",
+    ): Disable,
+    (
+        modifiers: [
+            Alt,
+        ],
+        key: "space",
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Tab",
+    ): System(AppLibrary),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): System(WorkspaceOverview),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "b",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "w",
+    ): System(WebBrowser),
+}

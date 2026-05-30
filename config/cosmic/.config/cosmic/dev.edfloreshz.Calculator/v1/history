@@ -1,0 +1,17 @@
+[
+    (
+        expression: "6/5.30",
+        outcome: "3/265 ≈ 0,011320755",
+        decimal_comma: true,
+    ),
+    (
+        expression: "3000+2000+900",
+        outcome: "5900",
+        decimal_comma: true,
+    ),
+    (
+        expression: "5900+400+500",
+        outcome: "6800",
+        decimal_comma: true,
+    ),
+]

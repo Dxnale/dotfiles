@@ -1,0 +1,76 @@
+{
+    (
+        modifiers: [
+            Alt,
+        ],
+        key: "space",
+    ): System(Launcher),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Tab",
+    ): System(AppLibrary),
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "s",
+    ): System(Screenshot),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "w",
+    ): System(WebBrowser),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "l",
+    ): System(LockScreen),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "z",
+        description: Some("Zed"),
+    ): Spawn("zed"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "p",
+        description: Some("Opencode"),
+    ): Spawn("cosmic-term --working-directory ~/opencode -e zsh -c \"/home/dan/.opencode/bin/opencode .; exec zsh\""),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "f",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+    ): System(WorkspaceOverview),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "e",
+    ): System(HomeFolder),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "b",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Escape",
+    ): Disable,
+}

@@ -1,0 +1,4 @@
+ghgrab v1.1.0:
+    ghgrab
+just v1.40.0:
+    just

@@ -1,0 +1,32 @@
+[
+    (
+        color: (1.0, 0.8, 0.13333334, 1.0),
+        skin_tone_mode: 1,
+        active: true,
+    ),
+    (
+        color: (0.96862745, 0.87058824, 0.80784315, 1.0),
+        skin_tone_mode: 2,
+        active: true,
+    ),
+    (
+        color: (0.9529412, 0.8235294, 0.63529414, 1.0),
+        skin_tone_mode: 4,
+        active: false,
+    ),
+    (
+        color: (0.7490196, 0.5529412, 0.40392157, 1.0),
+        skin_tone_mode: 8,
+        active: false,
+    ),
+    (
+        color: (0.6862745, 0.49411765, 0.34117648, 1.0),
+        skin_tone_mode: 16,
+        active: false,
+    ),
+    (
+        color: (0.4862745, 0.3254902, 0.24313726, 1.0),
+        skin_tone_mode: 32,
+        active: false,
+    ),
+]
